@@ -16,5 +16,5 @@ sensor(ID, Watcher) ->
 	true ->
 		Watcher!{ID, Measurement}
 	end,
-	
+
 	sensor(ID, Watcher).
