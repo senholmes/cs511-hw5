@@ -4,7 +4,12 @@
 
 
 setup_loop(N, 1) ->
-	
+	spawn(watcher, _, [1, N]);
+setup_loop(N, Num_watchers) ->
+	Num_sensor = _,
+	spawn(watcher, _, [Num_watchers-1, Num_sensor]),
+	setup_loop(N-Num_sensor, Num_watchers-1).
+
 
 
 
