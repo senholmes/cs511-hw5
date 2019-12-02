@@ -4,14 +4,10 @@
 
 
 setup_loop(N, 1) ->
-	spawn(watcher, _, [1, N]);
+	spawn(watcher, start_watcher, [N, 1, []]);
 setup_loop(N, Num_watchers) ->
-	Num_sensor = _,
-	spawn(watcher, _, [Num_watchers-1, Num_sensor]),
-	setup_loop(N-Num_sensor, Num_watchers-1).
-
-
-
+	spawn(watcher, start_watcher, [10, N-9, []]),
+	setup_loop(N-10, Num_watchers-1).
 
 start() ->
 	{ok,[N]} = io:fread("enter  number  of sensors > ", "~d"),
